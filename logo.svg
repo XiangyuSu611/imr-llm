@@ -1,0 +1,56 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1d4ed8"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+    <linearGradient id="center" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#bfdbfe"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100" height="100" rx="22" fill="url(#bg)"/>
+
+  <!-- Edges: outer nodes to center -->
+  <line x1="50" y1="20" x2="50" y2="50" stroke="white" stroke-width="1.8" opacity="0.55"/>
+  <line x1="22" y1="62" x2="50" y2="50" stroke="white" stroke-width="1.8" opacity="0.55"/>
+  <line x1="78" y1="62" x2="50" y2="50" stroke="white" stroke-width="1.8" opacity="0.55"/>
+
+  <!-- Edges: outer nodes to each other (task dependencies) -->
+  <line x1="50" y1="20" x2="22" y2="62" stroke="white" stroke-width="1.2" opacity="0.28"/>
+  <line x1="50" y1="20" x2="78" y2="62" stroke="white" stroke-width="1.2" opacity="0.28"/>
+  <line x1="22" y1="62" x2="78" y2="62" stroke="white" stroke-width="1.2" opacity="0.28"/>
+
+  <!-- Robot nodes (outer) -->
+  <!-- Top node -->
+  <circle cx="50" cy="20" r="9" fill="#93c5fd" filter="url(#glow)"/>
+  <rect x="46" y="15" width="8" height="7" rx="1.5" fill="#1d4ed8"/>
+  <rect x="47.5" y="14" width="5" height="2.5" rx="1" fill="#1d4ed8"/>
+  <rect x="44" y="22" width="3" height="4" rx="1" fill="#1d4ed8"/>
+  <rect x="53" y="22" width="3" height="4" rx="1" fill="#1d4ed8"/>
+
+  <!-- Bottom-left node -->
+  <circle cx="22" cy="62" r="9" fill="#93c5fd" filter="url(#glow)"/>
+  <rect x="18" y="57" width="8" height="7" rx="1.5" fill="#1d4ed8"/>
+  <rect x="19.5" y="56" width="5" height="2.5" rx="1" fill="#1d4ed8"/>
+  <rect x="16" y="64" width="3" height="4" rx="1" fill="#1d4ed8"/>
+  <rect x="25" y="64" width="3" height="4" rx="1" fill="#1d4ed8"/>
+
+  <!-- Bottom-right node -->
+  <circle cx="78" cy="62" r="9" fill="#93c5fd" filter="url(#glow)"/>
+  <rect x="74" y="57" width="8" height="7" rx="1.5" fill="#1d4ed8"/>
+  <rect x="75.5" y="56" width="5" height="2.5" rx="1" fill="#1d4ed8"/>
+  <rect x="72" y="64" width="3" height="4" rx="1" fill="#1d4ed8"/>
+  <rect x="81" y="64" width="3" height="4" rx="1" fill="#1d4ed8"/>
+
+  <!-- Central LLM node -->
+  <circle cx="50" cy="50" r="11" fill="url(#center)" filter="url(#glow)"/>
+  <text x="50" y="54" text-anchor="middle" font-family="Arial, sans-serif"
+        font-size="7" font-weight="700" fill="#1d4ed8">LLM</text>
+</svg>

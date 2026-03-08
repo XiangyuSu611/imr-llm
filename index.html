@@ -312,6 +312,94 @@
     .step-text h4 { font-size: 14px; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
     .step-text p  { font-size: 13.5px; color: var(--text-light); line-height: 1.5; }
 
+    /* ── Video subsections ── */
+    .video-subsection { margin-top: 48px; }
+    .video-subsection h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 20px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    /* Carousel */
+    .carousel {
+      position: relative;
+    }
+    .carousel-track {
+      position: relative;
+    }
+    .carousel-slide {
+      display: none;
+    }
+    .carousel-slide.active {
+      display: block;
+    }
+    .carousel-badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: #fff;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+    .badge-single   { background: #1e40af; }
+    .badge-simple   { background: #065f46; }
+    .badge-complex  { background: #6b21a8; }
+
+    .carousel-controls {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .carousel-controls-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      width: 100%;
+    }
+    .carousel-btn {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      font-size: 15px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
+    .carousel-btn:hover { background: var(--accent); }
+    .carousel-dots {
+      display: flex;
+      gap: 8px;
+    }
+    .carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--border);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .carousel-dot.active { background: var(--accent); }
+
+    /* Real-world single video */
+    .video-single {
+      width: 100%;
+    }
+
     /* ── Results table ── */
     .table-wrapper {
       overflow-x: auto;
@@ -642,9 +730,9 @@
         <thead>
           <tr>
             <th rowspan="2" style="text-align:left; min-width:140px; position:sticky; left:0; z-index:2; background:var(--primary);">Methods</th>
-            <th colspan="5" class="group-single" style="border-bottom: 1px solid rgba(255,255,255,0.2);">Single Robot</th>
-            <th colspan="5" class="group-simple" style="border-bottom: 1px solid rgba(255,255,255,0.2);">Simple Multi-Robot</th>
-            <th colspan="5" class="group-complex" style="border-bottom: 1px solid rgba(255,255,255,0.2);">Complex Multi-Robot</th>
+            <th colspan="5" class="group-single" style="border-bottom: 1px solid rgba(255,255,255,0.2);">Single Robot Task</th>
+            <th colspan="5" class="group-simple" style="border-bottom: 1px solid rgba(255,255,255,0.2);">Simple Multi-Robot Task</th>
+            <th colspan="5" class="group-complex" style="border-bottom: 1px solid rgba(255,255,255,0.2);">Complex Multi-Robot Task</th>
           </tr>
           <tr>
             <th class="group-single">OC↑</th><th class="group-single">SE↑</th><th class="group-single">Exe↑</th><th class="group-single">GCR↑</th><th class="group-single">SR↑</th>
@@ -696,11 +784,54 @@
       OC: Operation Correctness &nbsp;|&nbsp; SE: Scheduling Efficiency &nbsp;|&nbsp; Exe: Executability &nbsp;|&nbsp; GCR: Goal Completion Rate &nbsp;|&nbsp; SR: Success Rate
     </p>
 
-    <!-- Qualitative results placeholder -->
-    <div class="placeholder-fig" style="min-height: 300px; margin-top: 32px;">
-      <i class="fas fa-play-circle"></i>
-      <span>Qualitative Results / Demo Video</span>
-      <span style="font-size:12px; opacity:0.5;">Replace with &lt;video&gt; or YouTube embed</span>
+    <!-- Demonstrations in Simulated Environment -->
+    <div class="video-subsection">
+      <h3>Demonstrations in Simulated Environment</h3>
+      <div class="carousel" id="sim-carousel">
+        <div class="carousel-track">
+
+          <div class="carousel-slide active" data-badge="badge-single" data-label="Single Robot Task">
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/E3EhAjwfA7I" allowfullscreen></iframe>
+            </div>
+          </div>
+
+          <div class="carousel-slide" data-badge="badge-simple" data-label="Simple Multi-Robot Task">
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" allowfullscreen></iframe>
+            </div>
+          </div>
+
+          <div class="carousel-slide" data-badge="badge-complex" data-label="Complex Multi-Robot Task">
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" allowfullscreen></iframe>
+            </div>
+          </div>
+
+        </div>
+        <div class="carousel-controls">
+          <div class="carousel-controls-row">
+            <button class="carousel-btn" onclick="moveCarousel('sim-carousel', -1)"><i class="fas fa-chevron-left"></i></button>
+            <span class="carousel-badge badge-single" id="sim-carousel-label">Single Robot Task</span>
+            <button class="carousel-btn" onclick="moveCarousel('sim-carousel', 1)"><i class="fas fa-chevron-right"></i></button>
+          </div>
+          <div class="carousel-dots">
+            <div class="carousel-dot active" onclick="goToSlide('sim-carousel', 0)"></div>
+            <div class="carousel-dot" onclick="goToSlide('sim-carousel', 1)"></div>
+            <div class="carousel-dot" onclick="goToSlide('sim-carousel', 2)"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Representative Application in Real World -->
+    <div class="video-subsection">
+      <h3>Representative Application in Real World</h3>
+      <div class="video-single">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID_4" allowfullscreen></iframe>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -744,6 +875,41 @@
         btn.innerHTML = '<i class="fas fa-copy"></i> Copy';
       }, 2000);
     });
+  }
+</script>
+
+<script>
+  function getSlides(carouselId) {
+    const carousel = document.getElementById(carouselId);
+    return {
+      slides: carousel.querySelectorAll('.carousel-slide'),
+      dots: carousel.querySelectorAll('.carousel-dot'),
+    };
+  }
+
+  function currentIndex(slides) {
+    return Array.from(slides).findIndex(s => s.classList.contains('active'));
+  }
+
+  function goToSlide(carouselId, index) {
+    const { slides, dots } = getSlides(carouselId);
+    slides.forEach(s => s.classList.remove('active'));
+    dots.forEach(d => d.classList.remove('active'));
+    slides[index].classList.add('active');
+    dots[index].classList.add('active');
+
+    const label = document.getElementById(carouselId + '-label');
+    if (label) {
+      const slide = slides[index];
+      label.textContent = slide.dataset.label;
+      label.className = 'carousel-badge ' + slide.dataset.badge;
+    }
+  }
+
+  function moveCarousel(carouselId, dir) {
+    const { slides } = getSlides(carouselId);
+    const idx = (currentIndex(slides) + dir + slides.length) % slides.length;
+    goToSlide(carouselId, idx);
   }
 </script>
 

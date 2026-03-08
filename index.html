@@ -75,6 +75,7 @@
       color: var(--accent);
     }
 
+
     /* ── Authors ── */
     .authors {
       display: flex;
@@ -111,6 +112,8 @@
 
     .affiliation { margin: 0 10px; }
     .affiliation sup { font-size: 11px; font-weight: 700; color: var(--accent); }
+    .affiliation a { color: var(--text-light); text-decoration: none; }
+    .affiliation a:hover { color: var(--accent); text-decoration: underline; }
 
     /* ── Links ── */
     .links {
@@ -307,9 +310,17 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: default;
     }
 
-    .step-text h4 { font-size: 14px; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
+    .step:hover .step-num {
+      transform: scale(1.2);
+      box-shadow: 0 4px 12px rgba(37,99,235,0.4);
+    }
+
+    .step-text h4 { font-size: 14px; font-weight: 700; color: var(--primary); margin-bottom: 4px; transition: color 0.2s; }
+    .step:hover .step-text h4 { color: var(--accent); }
     .step-text p  { font-size: 13.5px; color: var(--text-light); line-height: 1.5; }
 
     /* ── Video subsections ── */
@@ -447,6 +458,12 @@
       border-radius: 12px;
       padding: 28px 20px;
       text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .bench-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.10);
     }
 
     .bench-card .number {
@@ -568,10 +585,10 @@
     </div>
 
     <div class="affiliations">
-      <span class="affiliation"><sup>1</sup>Shenzhen University</span>
-      <span class="affiliation"><sup>2</sup>SpeedBot Robotics Co., Ltd.</span>
-      <span class="affiliation"><sup>3</sup>Carleton University</span>
-      <span class="affiliation"><sup>4</sup>Institute of AI for Industries, Chinese Academy of Sciences</span>
+      <span class="affiliation"><sup>1</sup><a href="https://en.szu.edu.cn/" target="_blank">Shenzhen University</a></span>
+      <span class="affiliation"><sup>2</sup><a href="https://www.speedbot.com/en/home" target="_blank">SpeedBot Robotics Co., Ltd.</a></span>
+      <span class="affiliation"><sup>3</sup><a href="https://carleton.ca/" target="_blank">Carleton University</a></span>
+      <span class="affiliation"><sup>4</sup><a href="https://iaii.cas.cn/" target="_blank">Institute of AI for Industries, Chinese Academy of Sciences</a></span>
     </div>
 
     <div class="links">
@@ -647,6 +664,9 @@
 <section id="method">
   <div class="container">
     <h2 class="section-title">Method</h2>
+    <p style="text-align:center; color:var(--text-light); margin-bottom: 28px; font-size:15.5px;">
+      We introduce <strong>IMR-LLM</strong>, an LLM-driven framework for automated task planning and program generation in industrial multi-robot systems.
+    </p>
 
     <img class="method-img" src="overview.png" alt="IMR-LLM pipeline overview" />
 
@@ -687,24 +707,55 @@
 <!-- ═══════════════ BENCHMARK ═══════════════ -->
 <section id="benchmark">
   <div class="container">
-    <h2 class="section-title">IMR-Bench</h2>
+    <h2 class="section-title">Benchmark</h2>
     <p style="text-align:center; color:var(--text-light); margin-bottom: 28px; font-size:15.5px;">
-      A comprehensive benchmark for evaluating LLM-based industrial multi-robot task planners,
-      spanning three levels of task complexity.
+      We introduce <strong>IMR-Bench</strong>, built upon the Speedbot KunWu platform, comprising scenes and tasks
+      collected from real industrial environments by production line design experts.
     </p>
 
-    <div class="bench-grid">
+    <!-- Stats row -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin:0 0 20px;">
       <div class="bench-card">
-        <div class="number">3</div>
-        <div class="label">Difficulty Levels<br/>(Single-Robot / Simple Multi-Robot / Complex Multi-Robot)</div>
+        <div class="number">23</div>
+        <div class="label">Industrial Scenes<br/>with 1–7 robots each</div>
       </div>
       <div class="bench-card">
-        <div class="number">Multi</div>
-        <div class="label">Robot Coordination<br/>with Strict Constraints</div>
+        <div class="number">50</div>
+        <div class="label">Manufacturing Tasks<br/>reflecting real industrial needs</div>
       </div>
-      <div class="bench-card">
-        <div class="number">Full</div>
-        <div class="label">Evaluation Coverage<br/>Plan + Program Quality</div>
+    </div>
+
+    <!-- Difficulty levels container -->
+    <div style="border: 1px solid var(--border); border-radius: 14px; padding: 24px; background: var(--bg-gray);">
+      <div style="text-align:center; margin-bottom:20px;">
+        <span class="number" style="font-size:2.4rem; font-weight:700; color:var(--accent); line-height:1; display:block;">3</span>
+        <span class="label" style="font-size:13.5px; color:var(--text-light); margin-top:6px; display:block;">Difficulty Levels</span>
+      </div>
+      <div class="bench-grid" style="margin-top:0;">
+        <div class="bench-card" style="border-top: 3px solid #1e40af; text-align:left; background:var(--bg);">
+          <div style="font-size:12px; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:#1e40af; margin-bottom:8px;">Single Robot Task</div>
+          <ul style="list-style:none; font-size:14px; color:var(--text-light); line-height:2;">
+            <li>🤖 1 robot</li>
+            <li>⚙️ Up to 5 operations</li>
+            <li>▶️ Sequential execution</li>
+          </ul>
+        </div>
+        <div class="bench-card" style="border-top: 3px solid #065f46; text-align:left; background:var(--bg);">
+          <div style="font-size:12px; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:#065f46; margin-bottom:8px;">Simple Multi-Robot Task</div>
+          <ul style="list-style:none; font-size:14px; color:var(--text-light); line-height:2;">
+            <li>🤖 Up to 3 robots</li>
+            <li>⚙️ Up to 10 operations</li>
+            <li>▶️ Parallel or sequential</li>
+          </ul>
+        </div>
+        <div class="bench-card" style="border-top: 3px solid #6b21a8; text-align:left; background:var(--bg);">
+          <div style="font-size:12px; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:#6b21a8; margin-bottom:8px;">Complex Multi-Robot Task</div>
+          <ul style="list-style:none; font-size:14px; color:var(--text-light); line-height:2;">
+            <li>🤖 Up to 7 robots</li>
+            <li>⚙️ Up to 24 operations</li>
+            <li>▶️ Mixed parallel & sequential</li>
+          </ul>
+        </div>
       </div>
     </div>
 

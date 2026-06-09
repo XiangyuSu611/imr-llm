@@ -57,7 +57,39 @@
       text-transform: uppercase;
       padding: 4px 14px;
       border-radius: 20px;
-      margin-bottom: 20px;
+    }
+
+    .paper-badges {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0 24px;
+    }
+
+    .award-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: #fef3c7;
+      color: #92400e;
+      border: 1px solid #f59e0b;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 20px;
+    }
+
+    .award-badge .venue-text {
+      color: #78350f;
+    }
+
+    .award-badge .award-divider {
+      width: 1px;
+      height: 14px;
+      background: #f59e0b;
+      opacity: 0.75;
     }
 
     h1.paper-title {
@@ -569,7 +601,14 @@
       and Program Generation using Large Language Models
     </h1>
 
-    <span class="venue-badge" style="margin: 20px 0 24px; display: inline-block;">ICRA 2026</span>
+    <div class="paper-badges">
+      <span class="award-badge">
+        <span class="venue-text">ICRA 2026</span>
+        <span class="award-divider" aria-hidden="true"></span>
+        <i class="fas fa-trophy" aria-hidden="true"></i>
+        Best Paper in Automation
+      </span>
+    </div>
 
     <div class="authors">
       <span class="author">Xiangyu Su<sup>1,2</sup></span>

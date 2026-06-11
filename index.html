@@ -47,6 +47,10 @@
       text-align: center;
     }
 
+    header .container {
+      max-width: 1180px;
+    }
+
     .venue-badge {
       display: inline-block;
       background: var(--accent);
@@ -109,6 +113,12 @@
 
     h1.paper-title span.highlight {
       color: var(--accent);
+    }
+
+    @media (min-width: 900px) {
+      h1.paper-title .title-line {
+        white-space: nowrap;
+      }
     }
 
 
@@ -602,8 +612,8 @@
 <header>
   <div class="container">
     <h1 class="paper-title">
-      <span class="highlight">IMR-LLM</span>: Industrial Multi-Robot Task Planning<br/>
-      and Program Generation using Large Language Models
+      <span class="title-line"><span class="highlight">IMR-LLM</span>: Industrial Multi-Robot Task Planning</span><br/>
+      <span class="title-line">and Program Generation using Large Language Models</span>
     </h1>
 
     <div class="paper-badges">

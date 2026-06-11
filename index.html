@@ -69,16 +69,20 @@
     .award-badge {
       display: inline-flex;
       align-items: center;
-      gap: 7px;
+      gap: 9px;
       background: #fef3c7;
       color: #92400e;
-      border: 1px solid #f59e0b;
-      font-size: 13px;
-      font-weight: 700;
+      border: 2px solid #f59e0b;
+      font-size: 18px;
+      font-weight: 800;
       letter-spacing: 0.04em;
-      text-transform: uppercase;
-      padding: 4px 14px;
-      border-radius: 20px;
+      padding: 10px 22px;
+      border-radius: 999px;
+      box-shadow: 0 8px 24px rgba(245, 158, 11, 0.18);
+    }
+
+    .award-badge i {
+      font-size: 19px;
     }
 
     .award-badge .venue-text {
@@ -87,7 +91,7 @@
 
     .award-badge .award-divider {
       width: 1px;
-      height: 14px;
+      height: 18px;
       background: #f59e0b;
       opacity: 0.75;
     }
@@ -586,6 +590,7 @@
     @media (max-width: 640px) {
       h1.paper-title { font-size: 1.6rem; }
       h2.section-title { font-size: 1.4rem; }
+      .award-badge { font-size: 14.5px; padding: 8px 15px; }
       .bench-grid { grid-template-columns: 1fr; }
       .authors { gap: 4px 10px; }
     }
